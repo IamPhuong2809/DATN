@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './Login.css'; // Nếu có CSS riêng
-import logo from '../../assets/images/Logo_Horizon.png';
+import Logo_Horizon from '../../assets/images/Logo_Horizon.png';
+import Logo_UTE from '../../assets/images/Logo_UTE.png';
+import Logo_ACIS from '../../assets/images/Logo_ACIS.png';
+import Robot from '../../assets/images/Robot.png';
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -34,10 +37,14 @@ const Login = () => {
     return (
         <div>
             <div className="container">
+                <div className="logo-container">
+                    <img src={Logo_UTE} alt="Logo" className="logo-small" />
+                    <img src={Logo_ACIS} alt="Logo" className="logo-small second" />
+                </div>
                 <div className="form-container sign-in-container">
                     <form onSubmit={(e) => handleSubmit(e, 'signIn')}>
                         <div className="header-form">
-                            <img src={logo} alt="Logo" className="logo" />
+                            <img src={Logo_Horizon} alt="Logo" className="logo" />
                             <h1>Sign in</h1>
                         </div>
                         <div class="form-control">
@@ -64,9 +71,7 @@ const Login = () => {
                     </form>
                 </div>
                 <div className="overlay-container">
-                    <div className="overlay">
-
-                    </div>
+                    <img src={Robot} alt="Robot" className="robot" />
                 </div>
             </div>
         </div>
