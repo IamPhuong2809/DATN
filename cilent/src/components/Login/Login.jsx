@@ -4,8 +4,11 @@ import Logo_Horizon from '../../assets/images/Logo_Horizon.png';
 import Logo_UTE from '../../assets/images/Logo_UTE.png';
 import Logo_ACIS from '../../assets/images/Logo_ACIS.png';
 import Robot from '../../assets/images/Robot.png';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         signUp: {
             name: '',
@@ -30,8 +33,14 @@ const Login = () => {
 
     const handleSubmit = (e, type) => {
         e.preventDefault();
-        // Xử lý đăng nhập/đăng ký ở đây
+        // Xử lý đăng nhập
         console.log(`${type} form submitted:`, formData[type]);
+        
+        // Thêm đoạn code chuyển hướng này
+        if (type === 'signIn') {
+            // Tạm thời bỏ qua việc kiểm tra tài khoản mật khẩu
+            navigate('/homepage'); // Chuyển hướng đến trang Homepage
+        }
     };
 
     return (
