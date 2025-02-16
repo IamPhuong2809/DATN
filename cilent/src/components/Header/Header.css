@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+.header {
+    display: flex;
+    align-items: center;  /* Căn giữa theo chiều cao */
+    justify-content: space-between;
+    padding: 10px 30px;
+    background-color: #f5f5f5;  /* Màu nền xám nhạt */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 60px;  /* Chiều cao cố định cho header */
+}
+
+.header-logo {
+    height: 50px;
+    width: auto;
+    margin-top: -10px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-item {
+    background: none;
+    border: none;
+    color: black;
+    font-weight: 500;
+    padding: 8px 16px;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #1797e5;
+    transition: width 0.3s ease;
+}
+
+.nav-item:hover::after {
+    width: 100%;
+}
+
+.nav-item:hover {
+    color: #1797e5;
+}
+
+.nav-item-dropdown {
+    background: none;
+    border: none;
+    color: black;
+    font-weight: 500;
+    padding: 8px 16px;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nav-item-dropdown::after{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #1797e5;
+    transition: width 0.3s ease;
+}
+
+.nav-item-dropdown:hover::after{
+    width: 90%;
+}
+
+.nav-item-dropdown:hover{
+    color: #1797e5;
+}
+
+.login-item {
+    background-color: #1797e5;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;  /* Tăng lên 700 (bold) để thấy rõ sự khác biệt */
+    font-size: 15px;   /* Tăng kích thước chữ lên một chút */
+}
+
+.login-item:hover {
+    transform: scale(1.1);
+}
+
+.header-left {
+    display: flex;
+    align-items: center; 
+}
+
+.header-left a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.header-left span {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 65px;
+    font-weight: 800;
+    color: #1797e5;
+    margin-left: 20px;
+    margin-top: -10px;
+}
+
