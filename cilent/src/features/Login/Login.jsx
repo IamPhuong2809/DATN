@@ -5,19 +5,34 @@ import Logo_UTE from '../../assets/images/Logo_UTE.png';
 import Logo_ACIS from '../../assets/images/Logo_ACIS.png';
 import Robot from '../../assets/images/Robot.png';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
     const navigate = useNavigate();
     const formRef = useRef(null);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const formData = new FormData(formRef.current);
-        const username = formData.get('username');
-        const password = formData.get('password');
-        
-        console.log('Form submitted:', { username, password });
-        navigate('/homepage');
+        try {
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (response.ok) {
+                toast.success('Đăng nhập thành công!');
+                navigate('/');
+            } else {
+                toast.error('Đăng nhập thất bại!');
+            }
+            
+        } catch (error) {
+            console.error('Login error:', error);
+            toast.error('Đăng nhập thất bại!');
+        }
     };
 
     return (
@@ -37,6 +52,8 @@ const Login = () => {
                             <input 
                                 type="text" 
                                 name="username"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
                                 placeholder="" 
                                 autoComplete="off"
                             />
@@ -46,6 +63,8 @@ const Login = () => {
                             <input 
                                 type="password" 
                                 name="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                                 placeholder=""
                                 autoComplete="new-password"
                             />
