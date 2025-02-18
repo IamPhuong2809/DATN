@@ -1,27 +1,48 @@
 const express = require('express');
+const jwt = require("jsonwebtoken");
 const path = require('path');
-const { NodeSSH } = require('node-ssh');
+//const { NodeSSH } = require('node-ssh');
 const app = express();
 const port = 3000;
 
 // Middleware để parse JSON
 app.use(express.json());
 
-// Phục vụ các file static từ thư mục build của React
-app.use(express.static(path.join(__dirname, '..', 'login', 'build')));
+// Tìm file trong thư mục public trước
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Nếu không tìm thấy trong public, sẽ tìm trong thư mục build
+app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+
+// Thêm SECRET_KEY
+const SECRET_KEY = "28092003"; // Nên đặt trong biến môi trường
 
 // API đăng nhập
-app.post('/api/auth/login', (req, res) => {
+app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
   
-  // Dữ liệu mẫu để xác thực (nên thay thế bằng cơ sở dữ liệu thật)
-  const validUser = 'admin';
-  const validPassword = '123456';
+  const validUser = 'mphuong';
+  const validPassword = '2809';
 
   if (username === validUser && password === validPassword) {
-    res.json({ success: true });
+    // Tạo payload với nhiều thông tin hơn
+    const userPayload = {
+      username: username,
+      name: "Phuong",
+      email: "nminhphuong2809@gmail.com",
+      avatar: "/images/Logo_ACIS.png"
+    };
+    
+    const token = jwt.sign(userPayload, SECRET_KEY, { expiresIn: "1h" });
+    res.status(200).json({ 
+      success: true, 
+      token,
+      user: userPayload 
+    });
   } else {
-    res.json({ success: false });
+    res.status(401).json({ 
+      success: false, 
+    });
   }
 });
 
@@ -49,7 +70,7 @@ app.post('/api/auth/login', (req, res) => {
 
 // Xử lý tất cả các route khác và trả về index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'login', 'build',  'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
 });
 
 app.listen(port, () => {

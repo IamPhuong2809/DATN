@@ -1,7 +1,0 @@
-.homepage-container {
-    min-height: 100vh;
-}
-
-.homepage-content {
-    padding: 80px 20px 20px; /* Thêm padding-top để không bị header che */
-}
