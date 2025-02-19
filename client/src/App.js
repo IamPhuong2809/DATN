@@ -5,8 +5,8 @@ import Homepage from './features/Homepage/Homepage';
 import Control6DOF  from './features/Control_6dof/Control_6dof';
 import { BrowserRouter } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-
 function App() {
+    
   return (
     <BrowserRouter>
       <Toaster />
