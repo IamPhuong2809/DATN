@@ -1,11 +1,11 @@
 import React from 'react';
 import './Table.css';
 
-const Table = ({ savedPositions, handleUsePosition, handleDeletePosition, setShowModal }) => {
+const Table = ({ nameTitle, savedPositions, handleUsePosition, handleDeletePosition, setShowModal }) => {
     return (
         <div className="saved-position-list">
             <div className="modal-header">
-                <h2>Danh sách vị trí</h2>
+                <h2>{nameTitle}</h2>
                 <button className="btn-close" onClick={() => setShowModal(false)}>×</button>
             </div>
             {savedPositions.map((position) => (
@@ -18,8 +18,7 @@ const Table = ({ savedPositions, handleUsePosition, handleDeletePosition, setSho
                                 <span>{value}</span>
                             </div>
                         ))}
-                    </div>
-                    <div className="position-actions">
+                        <div className="position-actions">
                         <button 
                             className="btn-use"
                             onClick={() => handleUsePosition(position)}
@@ -32,6 +31,7 @@ const Table = ({ savedPositions, handleUsePosition, handleDeletePosition, setSho
                         >
                             Delete
                         </button>
+                    </div>
                     </div>
                 </div>
             ))}

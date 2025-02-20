@@ -2,10 +2,19 @@ import React, { useState } from 'react'
 import Header from '../../components/Header_control/Header_control'
 import './Control_6dof.css'
 import Table from '../../components/Table/Table'
+import Menu from '../../components/Menu/Menu'
+import logo1 from '../../assets/images/picture1.png'
+import logo2 from '../../assets/images/picture2.png'
+import logo3 from '../../assets/images/picture3.png'
+import logo4 from '../../assets/images/picture4.png'
+import logo5 from '../../assets/images/picture5.png'
+import logo6 from '../../assets/images/picture6.png'
+
 
 const Control_6dof = () => {
   const [showModal, setShowModal] = useState(false);
 
+  //#region Modal
   // Mảng chứa các vị trí đã lưu (có thể lấy từ API hoặc state management)
   const savedPositions = [
     {
@@ -38,6 +47,7 @@ const Control_6dof = () => {
         <div className="modal-overlay">
             <div className="modal-content">
                 <Table 
+                    nameTitle="List Home Position"
                     savedPositions={savedPositions}
                     setShowModal={setShowModal}
                 />
@@ -45,12 +55,31 @@ const Control_6dof = () => {
         </div>
     );
   };
+  //#endregion Modals
+
+  //#region Menu
+  const logos = [logo1, logo2, logo3, logo4, logo5, logo6, logo1];
+
+  const Menu_Left = () => {
+    return (
+      <div className='control-menu'>
+        <Menu logos={logos} handleButtonClick={handleButtonClick} />
+      </div>
+    );
+  };
+
+  const handleButtonClick = (buttonId) => {
+    console.log(`Button ${buttonId} clicked`);
+  };
+  //#endregion Menu
 
   return (
     <div className='6dof-container'>
       <Header />
       <div className='6dof-content'>
+        <Menu_Left/>
         <div className='control-panel'>
+
           {/* Cột 1 */}
           <div className='left-column'>
             <div className='control-card power-section'>
@@ -211,14 +240,8 @@ const Control_6dof = () => {
                 </div>
               </div>
             </div>
-
           </div>
-        </div>
-        
-        <div className='control-sidebar'>
-          <button>▲</button>
-          <button>▼</button>
-        </div>
+        </div>        
       </div>
       <Modal />
     </div>

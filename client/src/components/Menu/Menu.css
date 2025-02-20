@@ -1,0 +1,29 @@
+/* Thêm thanh điều khiển bên phải */
+.control-menu {
+    width: 80px; /* Tăng kích thước để phù hợp với hình ảnh */
+    background-color: #607380;
+    margin-right: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
+    height: calc(100vh - 90px); /* Chiều cao trừ đi phần header */
+    position: fixed;
+    left: 10px;
+    top: 75px;
+    gap: 5px;
+}
+
+.control-button {
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: transform 0.2s;
+    object-fit: contain;
+}
+
+.control-button:hover {
+    transform: scale(1.1);
+}
