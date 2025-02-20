@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Header_control.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import logo from '../../assets/images/Logo_Horizon.png'; // Đảm bảo đường dẫn đúng
 import defaultAvatar from '../../assets/images/default-avatar.png';
 import { jwtDecode } from 'jwt-decode';
@@ -10,6 +10,7 @@ function Header() {
     const [user, setUser] = useState(null);
     const [showDropdown, setShowDropdown] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const location = useLocation();
 
     useEffect(() => {
         const checkAuth = async () => {
@@ -57,11 +58,11 @@ function Header() {
             </div>
 
             <ul className="nav-menu">
-                <button className="nav-item">ASSIGN TASKS</button>
-                <button className="nav-item">MOBILE ROBOT</button>
-                <button className="nav-item">6DOF ROBOT</button>
-                <button className="nav-item">STATE SYSTEMS</button>
-                {isLoading ? (
+                <button className={`nav-item ${location.pathname === '/assign-tasks' ? 'active' : ''}`} onClick={() => navigate('/assign-tasks')}>ASSIGN TASKS</button>
+                <button className={`nav-item ${location.pathname === '/mobile-robot' ? 'active' : ''}`} onClick={() => navigate('/mobile-robot')}>MOBILE ROBOT</button>
+                <button className={`nav-item ${location.pathname === '/6dof' ? 'active' : ''}`} onClick={() => navigate('/6dof')}>6DOF ROBOT</button>
+                <button className={`nav-item ${location.pathname === '/state-systems' ? 'active' : ''}`} onClick={() => navigate('/state-systems')}>STATE SYSTEMS</button>
+            {isLoading ? (
                     <div className="auth-placeholder"></div>
                 ) : (
                     <div className="avatar-container">

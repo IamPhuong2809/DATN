@@ -60,10 +60,25 @@ const Control_6dof = () => {
   //#region Menu
   const logos = [logo1, logo2, logo3, logo4, logo5, logo6, logo1];
 
+    // Mảng chứa nội dung tooltip cho từng button
+    const tooltips = [
+    "Power Robot",
+    "Configuration",
+    "Cài đặt tham số",
+    "Lập trình Robot",
+    "Quản lý dữ liệu",
+    "Trợ giúp",
+    "Thông tin"
+    ];
+
   const Menu_Left = () => {
     return (
       <div className='control-menu'>
-        <Menu logos={logos} handleButtonClick={handleButtonClick} />
+        <Menu 
+            logos={logos} 
+            handleButtonClick={handleButtonClick}
+            tooltips={tooltips}
+         />
       </div>
     );
   };
@@ -106,8 +121,8 @@ const Control_6dof = () => {
               <div className='error-list'>
               {[1, 2, 3, 4].map(num => (
                   <div className='error-row' key={num}>
-                  <span>RCB Error ID {num}</span>
-                  <span>00000000</span>
+                  <span>Error ID {num}</span>
+                  <span>0000</span>
                   </div>
               ))}
               </div>

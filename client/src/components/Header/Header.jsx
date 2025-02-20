@@ -56,8 +56,12 @@ function Header() {
             </div>
 
             <ul className="nav-menu">
-                <button className="nav-item">CONTROL MODE</button>
-                <button className="nav-item">TECHNOLOGIES</button>
+                <Link to="/6dof">
+                    <button className="nav-item">CONTROL MODE</button>
+                </Link>
+                <Link to="Technologies/">
+                    <button className="nav-item">TECHNOLOGIES</button>
+                </Link>
                 <button className="nav-item-dropdown">
                     CONTACT US ▼
                     <div className="dropdown-content">

@@ -1,6 +1,6 @@
 /* Thêm thanh điều khiển bên phải */
 .control-menu {
-    width: 80px; /* Tăng kích thước để phù hợp với hình ảnh */
+    width: 80px;
     background-color: #607380;
     margin-right: 15px;
     border-radius: 8px;
@@ -12,7 +12,11 @@
     position: fixed;
     left: 10px;
     top: 75px;
-    gap: 5px;
+    z-index: 100;
+}
+
+.button-wrapper {
+    position: relative;
 }
 
 .control-button {
@@ -22,8 +26,46 @@
     cursor: pointer;
     transition: transform 0.2s;
     object-fit: contain;
+    border-radius: 10px;
 }
 
-.control-button:hover {
+.tooltip {
+    position: absolute;
+    left: 100%;
+    bottom: 10%;
+    background-color: rgba(23, 151, 229, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 20px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+    display: flex;
+    height: 80%;
+    align-items: center;
+}
+
+/* Tạo mũi tên chỉ về button */
+.tooltip::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent;
+}
+
+.button-wrapper:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+.button-wrapper:hover .control-button {
     transform: scale(1.1);
+    border-radius: 10px;
 }
