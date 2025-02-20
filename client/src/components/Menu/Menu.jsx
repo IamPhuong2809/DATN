@@ -4,7 +4,7 @@ import './Menu.css'
 
 const Menu = ({ handleButtonClick, logos, tooltips }) => {
     const formatPath = (text) => {
-        return text.replace(/\s+/g, '-');
+        return text.replace(/\s+/g, '');
     };
 
     return (
