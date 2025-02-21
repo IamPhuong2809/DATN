@@ -58,10 +58,10 @@ function Header() {
             </div>
 
             <ul className="nav-menu">
-                <button className={`nav-item ${location.pathname === '/assign-tasks' ? 'active' : ''}`} onClick={() => navigate('/assign-tasks')}>ASSIGN TASKS</button>
-                <button className={`nav-item ${location.pathname === '/mobile-robot' ? 'active' : ''}`} onClick={() => navigate('/mobile-robot')}>MOBILE ROBOT</button>
+                <button className={`nav-item ${location.pathname === '/AssignTask' ? 'active' : ''}`} onClick={() => navigate('/AssignTask')}>ASSIGN TASKS</button>
+                <button className={`nav-item ${location.pathname === '/ControlMobile' ? 'active' : ''}`} onClick={() => navigate('/ControlMobile')}>MOBILE ROBOT</button>
                 <button className={`nav-item ${location.pathname === '/6dof' ? 'active' : ''}`} onClick={() => navigate('/6dof')}>6DOF ROBOT</button>
-                <button className={`nav-item ${location.pathname === '/state-systems' ? 'active' : ''}`} onClick={() => navigate('/state-systems')}>STATE SYSTEMS</button>
+                <button className={`nav-item ${location.pathname === '/StateSystems' ? 'active' : ''}`} onClick={() => navigate('/StateSystems')}>STATE SYSTEMS</button>
             {isLoading ? (
                     <div className="auth-placeholder"></div>
                 ) : (
