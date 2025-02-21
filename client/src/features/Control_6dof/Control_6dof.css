@@ -1,13 +1,19 @@
-body {
+/* Xóa style cho body */
+/* body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
+} */
+
+/* Thêm class mới bao bọc toàn bộ component Control_6dof */
+.ui-6dof-container {
+    width: 100%;
+    height: 100vh;
     overflow: hidden;
 }
 
 .content-6dof {
     display: flex;
-    padding: 70px 20px 20px;
 }
 
 .control-panel {

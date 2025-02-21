@@ -71,7 +71,7 @@ const Control_6dof = () => {
     "Thông tin"
     ];
 
-  const Menu_Left = () => {
+  const MenuLeft = () => {
     return (
       <div className='control-menu'>
         <Menu 
@@ -89,10 +89,10 @@ const Control_6dof = () => {
   //#endregion Menu
 
   return (
-    <div className='6dof-container'>
+    <div className="ui-6dof-container">
       <Header />
-      <div className='6dof-content'>
-        <Menu_Left/>
+      <div className='content-6dof'>
+        <MenuLeft/>
         <div className='control-panel'>
 
           {/* Cột 1 */}
