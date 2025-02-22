@@ -1,4 +1,4 @@
-import Header from "../../components/Header_control/Header_control";
+import Header from "@components/Header/Header";
 
 const AssignTask = () => {
     return (

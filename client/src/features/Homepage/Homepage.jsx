@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import './Homepage.css';
-import Header from '../../components/Header/Header';
+import Header from '@components/Header/Header';
 import Slider from 'react-slick';
-import image1 from '../../assets/images/Red.png';
-import image2 from '../../assets/images/Blue.png';
-import image3 from '../../assets/images/Green.png';
+import image1 from '@images/Red.png';
+import image2 from '@images/Blue.png';
+import image3 from '@images/Green.png';
 
 function Homepage() {
 

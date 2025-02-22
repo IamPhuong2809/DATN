@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import Header from '../../components/Header_control/Header_control'
+import Header from '@components/Header_control/Header_control'
 import './Control_6dof.css'
-import Table from '../../components/Table/Table'
-import Menu from '../../components/Menu/Menu'
-import logo1 from '../../assets/images/picture1.png'
-import logo2 from '../../assets/images/picture2.png'
-import logo3 from '../../assets/images/picture3.png'
-import logo4 from '../../assets/images/picture4.png'
-import logo5 from '../../assets/images/picture5.png'
-import logo6 from '../../assets/images/picture6.png'
+import Table from '@components/Table/Table'
+import Menu from '@components/Menu/Menu'
+import logo1 from '@images/picture1.png'
+import logo2 from '@images/picture2.png'
+import logo3 from '@images/picture3.png'
+import logo4 from '@images/picture4.png'
+import logo5 from '@images/picture5.png'
+import logo6 from '@images/picture6.png'
 
 
 const Control_6dof = () => {

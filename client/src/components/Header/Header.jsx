@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
 import { Link, useNavigate } from 'react-router-dom';
-import logo from '../../assets/images/Logo_Horizon.png'; // Đảm bảo đường dẫn đúng
+import logo from '@images/Logo_Horizon.png'; // Đảm bảo đường dẫn đúng
 import { jwtDecode } from 'jwt-decode';
 
 function Header() {

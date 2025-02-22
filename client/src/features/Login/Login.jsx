@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 import './Login.css'; // Nếu có CSS riêng
-import Logo_Horizon from '../../assets/images/Logo_Horizon.png';
-import Logo_UTE from '../../assets/images/Logo_UTE.png';
-import Logo_ACIS from '../../assets/images/Logo_ACIS.png';
-import Robot from '../../assets/images/WebServer_Login_Image.png';
+import Logo_Horizon from '@images/Logo_Horizon.png';
+import Logo_UTE from '@images/Logo_UTE.png';
+import Logo_ACIS from '@images/Logo_ACIS.png';
+import Robot from '@images/WebServer_Login_Image.png';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { setToken } from '../../services/auth';

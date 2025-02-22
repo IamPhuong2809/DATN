@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Header_control.css';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import logo from '../../assets/images/Logo_Horizon.png'; // Đảm bảo đường dẫn đúng
-import defaultAvatar from '../../assets/images/default-avatar.png';
+import logo from '@images/Logo_Horizon.png'; // Đảm bảo đường dẫn đúng
+import defaultAvatar from '@images/default-avatar.png';
 import { jwtDecode } from 'jwt-decode';
 
 function Header() {
