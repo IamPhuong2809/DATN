@@ -110,10 +110,8 @@ const Control_6dof = () => {
                 <div className='status-item no-error'>No Error</div>
                 <div className='status-item ready'>Robot is ready to move</div>
                 <div className='status-item on'>End-Effector ON</div>
-                <div className='button-controls'>
-                  <button className='btn-reset'>Reset</button>
-                  <button className='btn-abort'>Abort</button>
-                </div>
+                <button className='btn-reset'>Reset</button>
+                <button className='btn-abort'>Abort</button>
               </div>
             </div>
             <div className='control-card error-section'>

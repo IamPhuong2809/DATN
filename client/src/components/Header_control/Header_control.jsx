@@ -12,6 +12,13 @@ function Header() {
     const [isLoading, setIsLoading] = useState(true);
     const location = useLocation();
 
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setUser(null);
+        setShowDropdown(false);
+        navigate('/login');
+    };
+
     useEffect(() => {
         const checkAuth = async () => {
             const token = localStorage.getItem('token');
@@ -33,14 +40,7 @@ function Header() {
         };
         
         checkAuth();
-    }, []);
-
-    const handleLogout = () => {
-        localStorage.removeItem('token');
-        setUser(null);
-        setShowDropdown(false);
-        navigate('/login');
-    };
+    });
 
     return (
         <header className="header">
@@ -77,7 +77,7 @@ function Header() {
                                 <span>{user?.name}</span>
                                 <span>{user?.email}</span>
                             </div>
-                            <button onClick={handleLogout}>Đăng xuất</button>
+                            <button onClick={handleLogout}>Logout</button>
                         </div>
                     </div>
                 )}
