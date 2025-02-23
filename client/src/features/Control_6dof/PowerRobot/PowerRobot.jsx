@@ -19,15 +19,6 @@ const PowerRobot = () => {
     RZ: 0.00
   });
 
-  const [toolName, setToolName] = useState('tool 1');
-
-  const handleCoordinateChange = (coord, value) => {
-    setCoordinates(prev => ({
-      ...prev,
-      [coord]: value
-    }));
-  };
-
   const handleReset = () => {
     setCoordinates({
       X: 0.00,
@@ -38,6 +29,24 @@ const PowerRobot = () => {
       RZ: 0.00
     });
   };
+
+  const [toolName, setToolName] = useState('tool 1');
+
+  const handleCoordinateChange = (coord, value) => {
+    setCoordinates(prev => ({
+      ...prev,
+      [coord]: value
+    }));
+  };
+
+  //#region Top Section
+    // Sử dụng một mảng state để quản lý trạng thái của 3 span
+    const [statuses, setStatuses] = useState([
+        { label: 'S', isOn: false },
+        { label: 'I', isOn: false },
+        { label: 'AUX', isOn: false },
+      ]);
+  //#endregion Top Section
 
     //#region Menu
     const logos = [logo1, logo2, logo3, logo4, logo5, logo6, logo1];
@@ -84,22 +93,30 @@ const PowerRobot = () => {
 
             {/* Left Controls */}
             <div className="top-section-left">
-                <span classname="IO-signal">S</span>
-                <span classname="IO-signal">I</span>
-                <span classname="IO-signal">AUX</span>
+                <div className="left-content1">
+                    {statuses.map((status, index) => (
+                        <div key={index}>
+                            <span className={`status-box ${status.isOn ? 'On' : ''}`}>
+                                {status.label}
+                            </span>
+                            </div>
+                        ))}
+                </div>
+
+                <div className="left-content2">
+                    <div className="text-gray-300 text-sm">
+                    <span>Tool: </span>
+                    <span className="text-white">0</span>
+                    </div>
+                    <div className="text-gray-300 text-sm">
+                    <span>Work: </span>
+                    <span className="text-white">0</span>
+                    </div>
+                </div>
             </div>
 
-            {/* Center Status */}
-            <div className="flex items-center ml-4 gap-4">
-                <div className="text-gray-300 text-sm">
-                <span>Tool: </span>
-                <span className="text-white">0</span>
-                </div>
-                <div className="text-gray-300 text-sm">
-                <span>Work: </span>
-                <span className="text-white">0</span>
-                </div>
-            </div>
+
+
 
             {/* Override Section */}
             <div className="flex items-center ml-4 gap-2">
