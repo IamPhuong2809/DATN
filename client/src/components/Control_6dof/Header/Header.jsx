@@ -11,6 +11,10 @@ function Header() {
     const [showDropdown, setShowDropdown] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const location = useLocation();
+    const is6Dof = location.pathname.startsWith("/6dof");
+    const isAssignTask = location.pathname.startsWith("/AssignTask");
+    const isControlMobile = location.pathname.startsWith("/ControlMobile");
+    const isStateSystems = location.pathname.startsWith("/StateSystems");
 
     const handleLogout = () => {
         localStorage.removeItem('token');
@@ -58,10 +62,10 @@ function Header() {
             </div>
 
             <ul className="nav-menu">
-                <button className={`nav-item ${location.pathname === '/AssignTask' ? 'active' : ''}`} onClick={() => navigate('/AssignTask')}>ASSIGN TASKS</button>
-                <button className={`nav-item ${location.pathname === '/ControlMobile' ? 'active' : ''}`} onClick={() => navigate('/ControlMobile')}>MOBILE ROBOT</button>
-                <button className={`nav-item ${location.pathname === '/6dof' ? 'active' : ''}`} onClick={() => navigate('/6dof')}>6DOF ROBOT</button>
-                <button className={`nav-item ${location.pathname === '/StateSystems' ? 'active' : ''}`} onClick={() => navigate('/StateSystems')}>STATE SYSTEMS</button>
+                <button className={`nav-item ${isAssignTask ? 'active' : ''}`} onClick={() => navigate('/AssignTask')}>ASSIGN TASKS</button>
+                <button className={`nav-item ${isControlMobile ? 'active' : ''}`} onClick={() => navigate('/ControlMobile')}>MOBILE ROBOT</button>
+                <button className={`nav-item ${is6Dof ? 'active' : ''}`} onClick={() => navigate('/6dof/PowerRobot')}>6DOF ROBOT</button>
+                <button className={`nav-item ${isStateSystems ? 'active' : ''}`} onClick={() => navigate('/StateSystems')}>STATE SYSTEMS</button>
             {isLoading ? (
                     <div className="auth-placeholder"></div>
                 ) : (

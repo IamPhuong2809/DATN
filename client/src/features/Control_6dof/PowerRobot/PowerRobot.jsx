@@ -1,55 +1,64 @@
-import React, { useState } from 'react';
-import './PowerRobot.css';
-import Menu from '@components/Control_6dof/Menu/Menu';
-import Header_Control from '@components/Control_6dof/Header/Header';
-import logo1 from '@images/picture1.png';
-import logo2 from '@images/picture2.png';
-import logo3 from '@images/picture3.png';
-import logo4 from '@images/picture4.png';
-import logo5 from '@images/picture5.png';
-import logo6 from '@images/picture6.png';
+import React, { useState } from 'react'
+import Header_Control from '@components/Control_6dof/Header/Header'
+import './PowerRobot.css'
+import Table from '@components/Control_6dof/Table/Table'
+import Menu from '@components/Control_6dof/Menu/Menu'
+import logo1 from '@images/picture1.png'
+import logo2 from '@images/picture2.png'
+import logo3 from '@images/picture3.png'
+import logo4 from '@images/picture4.png'
+import logo5 from '@images/picture5.png'
+import logo6 from '@images/picture6.png'
+
 
 const PowerRobot = () => {
-  const [coordinates, setCoordinates] = useState({
-    X: 20.00,
-    Y: 0.00,
-    Z: 0.00,
-    RX: 0.00,
-    RY: 0.00,
-    RZ: 0.00
-  });
+  const [showModal, setShowModal] = useState(false);
 
-  const handleReset = () => {
-    setCoordinates({
-      X: 0.00,
-      Y: 0.00,
-      Z: 0.00,
-      RX: 0.00,
-      RY: 0.00,
-      RZ: 0.00
-    });
+  //#region Modal
+  // Mảng chứa các vị trí đã lưu (có thể lấy từ API hoặc state management)
+  const savedPositions = [
+    {
+      id: 1,
+      name: "Home Position 1",
+      coordinates: {
+        X: 170.09, Y: -223.05, Z: 432.71,
+        Rl: 177.64, Pt: 16.31, Yw: 118.98
+      }
+    },
+    {
+      id: 2,
+      name: "Home Position 2",
+      coordinates: {
+        X: 180.00, Y: -220.00, Z: 430.00,
+        Rl: 175.00, Pt: 15.00, Yw: 120.00
+      }
+    }
+  ];
+
+  const handlePositionClick = () => {
+    setShowModal(true);
   };
 
-  const [toolName, setToolName] = useState('tool 1');
+  // Thêm Modal component vào phần render
+  const Modal = () => {
+    if (!showModal) return null;
 
-  const handleCoordinateChange = (coord, value) => {
-    setCoordinates(prev => ({
-      ...prev,
-      [coord]: value
-    }));
+    return (
+        <div className="modal-overlay">
+            <div className="modal-content">
+                <Table 
+                    nameTitle="List Home Position"
+                    savedPositions={savedPositions}
+                    setShowModal={setShowModal}
+                />
+            </div>
+        </div>
+    );
   };
+  //#endregion Modals
 
-  //#region Top Section
-    // Sử dụng một mảng state để quản lý trạng thái của 3 span
-    const [statuses, setStatuses] = useState([
-        { label: 'S', isOn: false },
-        { label: 'I', isOn: false },
-        { label: 'AUX', isOn: false },
-      ]);
-  //#endregion Top Section
-
-    //#region Menu
-    const logos = [logo1, logo2, logo3, logo4, logo5, logo6, logo1];
+  //#region Menu
+  const logos = [logo1, logo2, logo3, logo4, logo5, logo6, logo1];
 
     // Mảng chứa nội dung tooltip cho từng button
     const tooltips = [
@@ -79,110 +88,177 @@ const PowerRobot = () => {
   };
   //#endregion Menu
 
-  const handleTopButtonClick = (buttonName) => {
-    console.log(`Clicked ${buttonName}`);
-    // Xử lý logic khi bấm nút
-  };
-
   return (
-    <div>
+    <div className="ui-6dof-container">
       <Header_Control />
-      <MenuLeft />
-      <div className="power-robot-container">
-        <div className="top-section">
+      <div className='content-6dof'>
+        <MenuLeft/>
+        <div className='control-panel'>
 
-            {/* Left Controls */}
-            <div className="top-section-left">
-                <div className="left-content1">
-                    {statuses.map((status, index) => (
-                        <div key={index}>
-                            <span className={`status-box ${status.isOn ? 'On' : ''}`}>
-                                {status.label}
-                            </span>
-                            </div>
-                        ))}
+          {/* Cột 1 */}
+          <div className='left-column'>
+            <div className='control-card power-section'>
+              <div className='power-button'>
+                <span>Robot Power</span>
+                <div className='button-start'>
+                  <button className='btn-off active'>Off</button>
+                  <button className='btn-on'>On</button>
                 </div>
-
-                <div className="left-content2">
-                    <div className="text-gray-300 text-sm">
-                    <span>Tool: </span>
-                    <span className="text-white">0</span>
-                    </div>
-                    <div className="text-gray-300 text-sm">
-                    <span>Work: </span>
-                    <span className="text-white">0</span>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-            {/* Override Section */}
-            <div className="flex items-center ml-4 gap-2">
-                <span className="text-gray-400 text-sm">Override</span>
-                <span className="text-white text-sm">5 %</span>
-            </div>
-
-            {/* Right Section */}
-            <div className="ml-auto flex items-center gap-2">
-                <span className="text-gray-400 text-sm">Operator</span>
-                <span className="text-white text-sm">siemens</span>
-                <button className="text-gray-300 hover:text-white ml-2">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
-                </svg>
-                </button>
-            </div>
-        </div>
-
-
-      <div className="main-content">
-        <div className="control-section">
-          <div className="tool-header">
-            <div>
-              <div>Number</div>
-              <div>1</div>
-            </div>
-            <div style={{ marginLeft: '20px' }}>
-              <div>Name</div>
-              <input
-                type="text"
-                value={toolName}
-                onChange={(e) => setToolName(e.target.value)}
-                style={{ width: '300px' }}
-              />
-            </div>
-          </div>
-
-          <div className="coordinates-grid">
-            {Object.entries(coordinates).map(([coord, value]) => (
-              <div key={coord}>
-                <div>{coord}</div>
-                <input
-                  type="number"
-                  value={value}
-                  onChange={(e) => handleCoordinateChange(coord, parseFloat(e.target.value))}
-                  className="coordinate-input"
-                  step="0.01"
-                />
               </div>
-            ))}
+              <div className='status-list'>
+                <div className='status-item powered'>Powered</div>
+                <div className='status-item no-error'>No Error</div>
+                <div className='status-item ready'>Robot is ready to move</div>
+                <div className='status-item on'>End-Effector ON</div>
+                <button className='btn-reset'>Reset</button>
+                <button className='btn-abort'>Abort</button>
+              </div>
+            </div>
+            <div className='control-card error-section'>
+              <h3>Error IDs</h3>
+              <div className='error-list'>
+              {[1, 2, 3, 4].map(num => (
+                  <div className='error-row' key={num}>
+                  <span>Error ID {num}</span>
+                  <span>0000</span>
+                  </div>
+              ))}
+              </div>
+            </div>
           </div>
 
-          <div className="button-group">
-            <button className="button reset-button" onClick={handleReset}>
-              Reset
-            </button>
-            <button className="button write-button">
-              Write to Robot
-            </button>
+          {/* Cột 2 và 3 */}
+          <div className='right-columns'>
+            <div className='control-card position-section'>
+              <h3>Cartesian Position</h3>
+              <div className='position-display'>
+                <div className='position-row'>
+                  <span>X</span>
+                  <span>+170.08mm</span>
+                </div>
+                <div className='position-row'>
+                  <span>Y</span>
+                  <span>-223.05mm</span>
+                </div>
+                <div className='position-row'>
+                  <span>Z</span>
+                  <span>+432.70mm</span>
+                </div>
+                <div className='position-row'>
+                  <span>Roll</span>
+                  <span>+177.64°</span>
+                </div>
+                <div className='position-row'>
+                  <span>Pitch</span>
+                  <span>+16.31°</span>
+                </div>
+                <div className='position-row'>
+                  <span>Yaw</span>
+                  <span>+118.98°</span>
+                </div>
+              </div>
+            </div>
+            <div className='control-card axis-section'>
+              <h3>Axis Position</h3>
+              <div className='axis-display'>
+                <div className='axis-row'>
+                  <span>J1</span>
+                  <span>-52.67°</span>
+                </div>
+                <div className='axis-row'>
+                  <span>J2</span>
+                  <span>+10.44°</span>
+                </div>
+                <div className='axis-row'>
+                  <span>J3</span>
+                  <span>+95.79°</span>
+                </div>
+                <div className='axis-row'>
+                  <span>J4</span>
+                  <span>+0.00°</span>
+                </div>
+                <div className='axis-row'>
+                  <span>J5</span>
+                  <span>+57.29°</span>
+                </div>
+                <div className='axis-row'>
+                  <span>J6</span>
+                  <span>+8.01°</span>
+                </div>
+              </div>
+            </div>
+            <div className='control-card parameters-section'>
+              <h3>Parameters</h3>
+              <div className='parameters-list'>
+                <div className='parameter-row'>
+                  <span>Data-time</span>
+                  <span>Thu, 00-00-0000, 00:00:00</span>
+                </div>
+                <div className='parameter-row'>
+                  <span>Power Consumption</span>
+                  <span>0.00W</span>
+                </div>
+                <div className='parameter-row'>
+                  <span>SSH Speed</span>
+                  <span>0.00Mbps</span>
+                </div>
+                <div className='parameter-row'>
+                  <span>IP Address robot controller</span>
+                  <span>169. 147. 100 .220</span>
+                </div>
+              </div>
+            </div>
+
+            <div className='control-card home-position-section'>
+              <h3>Home Position</h3>
+              <div className='home-position-grid'>
+                <div className='position-group'>
+                  <div className='position-label'>X</div>
+                  <input type="text" value="170.09" readOnly />
+                </div>
+                <div className='position-group'>
+                  <div className='position-label'>Y</div>
+                  <input type="text" value="-223.05" readOnly />
+                </div>
+                <div className='position-group'>
+                  <div className='position-label'>Z</div>
+                  <input type="text" value="432.71" readOnly />
+                </div>
+                <div className='home-position-actions'>
+                  <button className='btn-default'>DEFAULT</button>
+                </div>
+                <div className='position-group'>
+                  <div className='position-label'>Rl</div>
+                  <input type="text" value="177.64" readOnly />
+                </div>
+                <div className='position-group'>
+                  <div className='position-label'>Pt</div>
+                  <input type="text" value="16.31" readOnly />
+                </div>
+                <div className='position-group'>
+                  <div className='position-label'>Yw</div>
+                  <input type="text" value="118.98" readOnly />
+                </div>
+                <div className='home-position-actions'>
+                  <button className='btn-save'>SAVE</button>
+                </div>
+              </div>
+              <div className="home-list">
+                <div
+                className="home-list-item"
+                onClick={() => handlePositionClick()}
+                >
+                <span>List home position</span>
+                <span>→</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </div>        
       </div>
+      <Modal />
     </div>
-    </div>
-  );
-};
+  )
+}
 
-export default PowerRobot;
+export default PowerRobot

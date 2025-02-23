@@ -1,123 +1,417 @@
-.power-robot-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background-color: black;
-  left: 110px;
-  top: 75px;
-  width: 91%;
-  height: 87vh;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+/* Xóa style cho body */
+/* body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+} */
+
+/* Thêm class mới bao bọc toàn bộ component Control_6dof */
+.ui-6dof-container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
 }
 
-.top-section {
-  display: flex;
-  background-color: gray;
-  color: white;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-}
-
-.top-section-left{
+.content-6dof {
     display: flex;
-    flex-direction: row;
-    gap: 60px;
-    margin-left: 5px;
-}
-
-.left-content1{
-    display: flex;
-    gap: 15px;
-    flex-direction: row;
-    margin-left: 15px;
-}
-
-.status-box{
-    display: flex;
-    padding: 10px 15px;
-    background-color: rgb(207, 57, 57);
-    color: white;
-    font-size: 17px;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-}
-
-.status-box.On{
-    background-color: rgb(10, 173, 10);
-}
-
-.left-content2{
-    padding: 0px;
-    display: flex;
-    flex-direction: column;
-    font-size: 17px;
     align-items: center;
 }
 
-.main-content {
-  display: flex;
-  flex: 1;
+.control-panel {
+    position: relative;
+    left: 100px;
+    display: grid;
+    grid-template-columns: 21% 71%; /* Tạo 3 cột: khoảng trống trái (7%), cột nhỏ (21%), cột lớn (72%) */
+    gap: 15px;
+    padding: 15px;
+    margin-top: 60px;
 }
 
-.slider-section {
-  width: 60px;
-  margin-right: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.control-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.control-section {
-  flex: 1;
-  background: white;
-  padding: 20px;
-  border-radius: 4px;
+/* Power Section Styles */
+.power-section {
+    width: 100%;
+    overflow: hidden;
+}
+.power-section span {
+    font-size: calc(10px + max(1vh, 1vh));
+}
+.power-button {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0px;
 }
 
-.tool-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
+.button-start {
+    display: flex;
+    gap: 10px;
 }
 
-.coordinates-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-bottom: 20px;
+.btn-off, .btn-on {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-.coordinate-input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+.btn-off {
+    background-color: #e0e0e0;
 }
 
-.button-group {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 20px;
+.btn-off.active {
+    background-color: #333;
+    color: white;
 }
 
-.button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.btn-on {
+    background-color: #e0e0e0;
 }
 
-.reset-button {
-  background-color: #4a4a4a;
-  color: white;
+.status-list {
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 100%;
+    justify-content: space-between;
 }
 
-.write-button {
-  background-color: #006d8f;
-  color: white;
+.status-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    color: white;
+    height: 100%;
+    font-size: calc(9px + max(1vh, 1vh));
+  }
+
+.powered {
+    background-color: #4CAF50;
 }
+
+.no-error {
+    background-color: #4CAF50;
+}
+
+.ready {
+    background-color: #4CAF50;
+}
+
+.on {
+    background-color: #4CAF50;
+}
+
+
+.btn-reset, .btn-abort {
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    height: 100%;
+    font-size: calc(7px + max(1vh, 1vh));
+    align-items: center;
+}
+
+.btn-reset {
+    background-color: #607D8B;
+    margin-top: 0px;
+}
+
+.btn-abort {
+    background-color: #f44336;
+    margin-top: -10px;
+}
+
+/* Position Section Styles */
+.position-section {
+    width: 100%;
+    overflow: hidden;
+}
+
+.position-section h3 {
+    margin-top: 0px;
+    font-size: calc(12px + max(1vh, 1vh));
+}
+
+.position-display {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.position-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    width: 40%;
+    height: 100%;
+    font-size: calc(9px + max(1vh, 1vh));
+}
+
+/* Error Section Styles */
+.error-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+}
+
+.error-section h3 {
+    margin-top: 0px;
+    font-size: calc(12px + max(1vh, 1vh));
+}
+
+.error-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.error-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    margin-top: -10px;
+    height: 100%;
+    font-size: calc(9px + max(1vh, 1vh));
+    align-items: center;    
+}
+
+/* Các style cho phần điều khiển 6 bậc tự do có thể được thêm vào đây */
+
+/* Axis Position Styles */
+.axis-section {
+    width: 100%;
+    overflow: hidden;
+}
+
+.axis-section h3 {
+    margin-top: 0px;
+    font-size: calc(12px + max(1vh, 1vh));
+}
+
+.axis-display {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.axis-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    width: 40%;
+    height: 100%;
+    font-size: calc(9px + max(1vh, 1vh));
+    align-items: center;
+}
+
+/* Parameters Styles */
+.parameters-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    overflow: hidden;
+}
+
+.parameters-section h3 {
+    margin-top: 0px;
+    font-size: calc(12px + max(1vh, 1vh));
+}
+
+.parameters-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.parameter-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    margin-top: -10px;
+    height: 100%;
+    font-size: calc(9px + max(1vh, 1vh));
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-save, .btn-default {
+    padding: 8px 20px;
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100px;
+    height: 35px;
+}
+
+.btn-save:hover, .btn-default:hover {
+    background-color: #007399;
+}
+
+.left-column {
+    display: grid;
+    grid-template-rows: 1fr 1fr; /* 2 hàng, mỗi hàng 1 phần (1fr) */
+    gap: 15px;
+}
+
+/* Thêm container mới cho cột 2 và 3 */
+.right-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Giữ nguyên 2 cột bằng nhau */
+    grid-template-rows: 50vh 50vh; /* Chia thành 2 hàng với tỷ lệ 40-60 */
+    gap: 15px;
+}
+
+/* Điều chỉnh các card trong cột đầu tiên */
+.power-section,
+.error-section,
+.home-position-section {
+    width: 100%;
+}
+
+/* Điều chỉnh các card trong cột 2 và 3 */
+.position-section,
+.axis-section,
+.parameters-section {
+    width: 100%;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .control-panel {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .control-panel {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Home Position Styles */
+.home-position-section {
+    padding: 20px;
+    width: 100%;
+    height: 70%;
+}
+
+.home-position-section h3 {
+    margin-top: 3px;
+    margin-bottom: 10px;
+    font-size: calc(12px + max(1vh, 1vh));
+}
+
+.home-position-grid {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    row-gap: 0px;
+    align-items: center;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.position-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    height: 100%;
+}
+
+.position-label {
+    font-weight: bold;
+    min-width: 20px;
+    font-size: calc(9px + max(1vh, 1vh));
+}
+
+.position-group input {
+    width: 70%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: 60%;
+    font-size: calc(9px + max(1vh, 1vh));
+}
+
+.home-position-actions {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.btn-default, .btn-save {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    font-size: calc(5px + max(1vh, 1vh));
+
+}
+
+.home-list {
+    display: flex;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    height: 50%;
+
+}
+
+.home-list span {
+    font-size: calc(10px + max(1vh, 1vh));
+}
+
+.home-list-item {
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.home-list-item:hover {
+    background-color: #f5f5f5;
+}
+
