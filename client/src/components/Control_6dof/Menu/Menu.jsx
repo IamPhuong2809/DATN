@@ -11,7 +11,7 @@ const Menu = ({ handleButtonClick, logos, tooltips }) => {
         <nav className='control-menu'>
           {logos.map((logo, index) => (
             <div key={index} className="button-wrapper">
-              <Link to={`${window.location.pathname}/${formatPath(tooltips[index])}`}>
+              <Link to={`/6dof/${formatPath(tooltips[index])}`}>
                 <img 
                   src={logo} 
                   alt={`Button ${index + 1}`} 

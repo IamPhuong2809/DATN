@@ -19,9 +19,9 @@
 
 .control-panel {
     position: relative;
-    left: 90px;
+    left: 100px;
     display: grid;
-    grid-template-columns: 21% 72%; /* Tạo 3 cột: khoảng trống trái (7%), cột nhỏ (21%), cột lớn (72%) */
+    grid-template-columns: 21% 71%; /* Tạo 3 cột: khoảng trống trái (7%), cột nhỏ (21%), cột lớn (72%) */
     gap: 15px;
     padding: 15px;
     margin-top: 60px;

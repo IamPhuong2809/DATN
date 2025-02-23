@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import Header from '@components/Header_control/Header_control'
+import Header_Control from '@components/Control_6dof/Header/Header'
 import './Control_6dof.css'
-import Table from '@components/Table/Table'
-import Menu from '@components/Menu/Menu'
+import Table from '@components/Control_6dof/Table/Table'
+import Menu from '@components/Control_6dof/Menu/Menu'
 import logo1 from '@images/picture1.png'
 import logo2 from '@images/picture2.png'
 import logo3 from '@images/picture3.png'
@@ -90,7 +90,7 @@ const Control_6dof = () => {
 
   return (
     <div className="ui-6dof-container">
-      <Header />
+      <Header_Control />
       <div className='content-6dof'>
         <MenuLeft/>
         <div className='control-panel'>

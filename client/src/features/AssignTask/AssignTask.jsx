@@ -1,9 +1,9 @@
-import Header from "@components/Header/Header";
+import Header_Control from "@components/Control_6dof/Header/Header";
 
 const AssignTask = () => {
     return (
         <div>
-            <Header />
+            <Header_Control />
         </div>
     )
 }

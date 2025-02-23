@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Header_control.css';
+import './Header.css';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import logo from '@images/Logo_Horizon.png'; // Đảm bảo đường dẫn đúng
 import defaultAvatar from '@images/default-avatar.png';

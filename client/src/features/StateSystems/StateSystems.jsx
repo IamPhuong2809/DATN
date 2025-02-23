@@ -1,9 +1,9 @@
-import Header from "@components/Header_control/Header_control";
+import Header_Control from "@components/Control_6dof/Header/Header";
 
 const StateSystems = () => {
     return (
         <div>
-            <Header />
+            <Header_Control />
         </div>
     )
 }
